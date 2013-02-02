@@ -1,45 +1,12 @@
 @layout('template')
 
-@section('title')Laravel: A Framework For Web Artisans@endsection
-
 @section('content')
 
 <div class="page-header">
-  <h1>Laravel <small>A Framework For Web Artisans</small></h1>
+  <h1>Caarl <small><b>C</b>omputer <b>A</b>ssignment <b>a</b>nd <b>R</b>epair <b>L</b>og</small></h1>
 </div>
 
-<h2>Learn the terrain.</h2>
-
-<p class="lead">
-  You've landed yourself on our default home page. The route that
-  is generating this page lives at:
-</p>
-
-<pre>{{ path('app') }}routes.php</pre>
-
-<p>And the view sitting before you can be found at:</p>
-
-<pre>{{ path('app') }}views/home/index.blade.php</pre>
-
-<h2>Grow in knowledge.</h2>
-
-<p>
-  Learning to use Laravel is amazingly simple thanks to
-  its {{ HTML::link('docs', 'wonderful documentation') }}.
-</p>
-
-<h2>Create something beautiful.</h2>
-
-<p>
-  Now that you're up and running, it's time to start creating!
-  Here are some links to help you get started:
-</p>
-
-<ul class="out-links">
-  <li><a href="http://laravel.com">Official Website</a></li>
-  <li><a href="http://forums.laravel.com">Laravel Forums</a></li>
-  <li><a href="http://github.com/laravel/laravel">GitHub Repository</a></li>
-</ul>
+<p>I haven't decided what to put here yet. I'm thinking a list of active computer/charger issues, but I haven't quite worked it out yet.</p>
 @endsection
 
 <?php /*

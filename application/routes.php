@@ -32,9 +32,26 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.index');
+Route::get('/', 'home@index');
+
+Route::get('clients', function() {
+  // 
+});
+
+Route::post('clients', function() {
+  // 
+});
+
+Route::get('login', function() {
+  return View::make('pages.login');
+});
+
+Route::post('login', function() {
+  // 
+});
+
+Route::get('logout', function() {
+  // 
 });
 
 /*
