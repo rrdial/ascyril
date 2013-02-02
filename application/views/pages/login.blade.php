@@ -5,7 +5,17 @@
 
 <!-- check for login errors flash var -->
 @if (Session::has('login_errors'))
-<span class="error">Username or password incorrect.</span>
+<div class="alert alert-error">
+  <h4>Error</h4>
+  Incorrect username and password combination.
+</div>
+@endif
+
+@if (Session::has('logout_successful'))
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Logout successful!</strong>
+</div>
 @endif
 
 <h2 class="form-signin-heading">Please sign in</h2>

@@ -43,15 +43,29 @@ Route::post('clients', function() {
         });
 
 Route::get('login', function() {
+          if (Auth::check()) {
+            return Redirect::to('/');
+          }
           return View::make('pages.login');
         });
 
 Route::post('login', function() {
-          // 
+          $credentials = array(
+              'username' => Input::get('username'),
+              'password' => Input::get('password')
+          );
+          if (Auth::attempt($credentials)) {
+            return Redirect::to('/');
+          } else {
+            return Redirect::to('login')
+                            ->with('login_errors', true);
+          }
         });
 
 Route::get('logout', function() {
-          // 
+          Auth::logout();
+          return Redirect::to('login')
+                          ->with('logout_successful', true);
         });
 
 /*

@@ -8,6 +8,9 @@
       </a>
       <a class="brand" href="{{URL::base()}}/">Caarl</a>
       @if (Auth::check())
+      <p class="navbar-text pull-right">
+        Hello {{Auth::user()->nickname}}!
+      </p>
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li class=""><a href="{{URL::base()}}">Home</a></li>
