@@ -13,7 +13,8 @@
       </p>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class=""><a href="{{URL::base()}}">Home</a></li>
+          <li class=""><a href="{{URL::to('clients')}}">Clients</a></li>
+          <li class=""><a href="{{URL::to('equipment/computers')}}">Computers</a></li>
         </ul>
       </div><!--/.nav-collapse -->
       @endif

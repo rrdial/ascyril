@@ -41,6 +41,8 @@ Route::get('clients', function() {
 Route::post('clients', function() {
           // 
         });
+        
+Route::controller('equipment.computers');
 
 Route::get('login', function() {
           if (Auth::check()) {
