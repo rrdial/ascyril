@@ -11,9 +11,11 @@ class Create_Computers {
     Schema::create('computers', function($table) {
               $table->engine = 'InnoDB';
               $table->increments('id');
-              $table->string('client_id')->unsigned()->nullable();
+              $table->integer('client_id')->unsigned()->nullable();
+              $table->integer('status_id')->unsigned()->nullable();
               $table->integer('asset_tag')->unsigned()->unique();
-              $table->string('sn', 16)->unique();
+              $table->string('sn', 16)->unique()->nullable();
+              $table->string('name', 3)->unique()->nullable();
               $table->timestamps();
             });
   }
