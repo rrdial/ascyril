@@ -33,14 +33,6 @@
  */
 
 Route::get('/', 'home@index');
-
-Route::get('clients', function() {
-          // 
-        });
-
-Route::post('clients', function() {
-          // 
-        });
         
 Route::controller('equipment.computers');
 
