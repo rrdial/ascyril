@@ -33,8 +33,26 @@
  */
 
 Route::get('/', 'home@index');
-        
-Route::controller('equipment.computers');
+
+//Route::controller('equipment.computers');
+
+Route::get('computers', function() {
+          return View::make('computers.index')
+                          ->with('computers', Computer::all());
+        });
+
+Route::get('computers/(:num)', function($asset_tag) {
+          return View::make('computers.view')
+                          ->with('computer', Computer::find($asset_tag));
+        });
+
+Route::get('computers/(:num)/edit', function($asset_tag) {
+          //
+        });
+
+Route::post('computers/(:num)/edit', function($asset_tag) {
+          //
+        });
 
 Route::get('login', function() {
           if (Auth::check()) {
