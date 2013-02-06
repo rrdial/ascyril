@@ -137,6 +137,11 @@ Route::filter('before', function() {
 
 Route::filter('after', function($response) {
           // Do stuff after every request to your application...
+          $response->header('Expires', 'Sun, 27 Oct 1985 07:45:00 GMT');
+          $response->header('Last-Modified', gmdate("D, d M Y H:i:s") . " GMT");
+          $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+          $response->header('Cache-Control', 'post-check=0, pre-check=0', false);
+          $response->header('Pragma', 'no-cache');
         });
 
 Route::filter('csrf', function() {
