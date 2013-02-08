@@ -7,9 +7,7 @@
   <h1>Computers</h1>
 </div>
 
-<ul>
-  <?php foreach ($computers as $c) : ?>
-    <li>{{$c->asset_tag}}</li>
-  <?php endforeach; ?>
-</ul>
+<?php foreach ($computers as $c) : ?>
+  <a class="" href="<?php echo \Laravel\URL::to_route('computer_view', array($c->asset_tag)) ?>">{{$c->asset_tag}}</h4>
+<?php endforeach; ?>
 @endsection

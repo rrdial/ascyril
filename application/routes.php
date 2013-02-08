@@ -44,6 +44,7 @@ Route::get('computers', array('before' => 'auth',
 );
 
 Route::get('computers/(:num)', array('before' => 'auth',
+    'as' => 'computer_view',
     function($asset_tag) {
       return View::make('computers.view')
                       ->with('computer', Computer::where_asset_tag($asset_tag)->first());
