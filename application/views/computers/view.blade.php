@@ -41,7 +41,7 @@ $log = new stdClass();
 $log->message = 'Smashed it with a sledge hammer.';
 $log->user = $user;
 
-$logs = array($log);
+$logs = array($log,$log,$log,$log,$log,);
 ?>
 <?php foreach ($logs as $log) : ?>
   <div class="media">
