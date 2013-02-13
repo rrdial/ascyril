@@ -36,12 +36,8 @@ Route::get('/', 'home@index');
 
 //Route::controller('equipment.computers');
 
-Route::get('computers', array('before' => 'auth',
-    function() {
-      return View::make('computers.index')
-                      ->with('computers', Computer::all());
-    })
-);
+Route::get('computers', array('before' => 'auth', 'uses' => 'computers@index'));
+Route::post('computers', array('before' => 'auth', 'uses' => 'computers@index'));
 
 Route::get('computers/(:num)', array('before' => 'auth',
     'as' => 'computer_view',
