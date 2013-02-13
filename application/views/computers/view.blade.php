@@ -43,14 +43,14 @@ $log->user = $user;
 
 $logs = array($log,$log,$log,$log,$log,);
 ?>
-<?php foreach ($logs as $log) : ?>
+<?php foreach ($computer->comments()->get() as $log) : ?>
   <div class="media">
     <div class="pull-left">
       <img class="media-object" src="{{$log->user->gravatar(64)}}">
     </div>
     <div class="media-body">
-      <h4 class="media-heading">{{$log->user->nickname}}</h4>
-      {{$log->message}}
+      <h4 class="media-heading">{{$log->message}}</h4>
+      {{$log->user->nickname}}
     </div>
   </div>
 <?php endforeach; ?>
