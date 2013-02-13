@@ -61,6 +61,50 @@ Route::post('computers/(:num)/edit', array('before' => 'auth|csrf',
     })
 );
 
+/*
+ * Routing for user profile shtuff
+ */
+Route::get('profile', array(
+    'before' => 'auth',
+    function() {
+      return View::make('admin.profile');
+    }
+));
+Route::post('profile', array(
+    'before' => 'auth',
+    function() {
+      $user_update = array(
+          'nickname' => Input::get('nickname'),
+          'email' => Input::get('email'),
+          'password' => Input::get('password'),
+          'password_confirmation' => Input::get('password_confirmation'),
+      );
+      $rules = array(
+          'email' => 'required|email|unique:users,email,' . Auth::user()->id,
+          'nickname' => 'required|max:128',
+          'password' => 'confirmed',
+      );
+      $v = Validator::make($user_update, $rules);
+      if ($v->fails()) {
+        return Redirect::to('profile', 303)
+                        ->with_errors($v)
+                        ->with_input('except', array('password', 'password_confirmation'));
+      } else {
+        $user = Auth::user();
+        $user->email = $user_update['email'];
+        $user->nickname = $user_update['nickname'];
+        if ($user_update['password'])
+          $user->password = Hash::make($user_update['password']);
+        $user->save();
+        return Redirect::to('profile', 303)
+                        ->with('profile_updated', TRUE);
+      }
+    }
+));
+
+/*
+ * Route for loggin in and logging out.
+ */
 Route::get('login', function() {
           if (Auth::check()) {
             return Redirect::to('/');
@@ -158,5 +202,6 @@ Route::filter('csrf', function() {
 
 Route::filter('auth', function() {
           if (Auth::guest())
-            return Redirect::to('login');
+            return Redirect::to('login')
+                            ->with('return', URL::current());
         });

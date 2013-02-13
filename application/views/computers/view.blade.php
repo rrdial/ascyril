@@ -36,8 +36,7 @@
 
 <h2 class="page-header">Activity Log</h2>
 <?php
-$user = new \User();
-$user->nickname = 'Ryan Dial';
+$user = User::find(1);
 $log = new stdClass();
 $log->message = 'Smashed it with a sledge hammer.';
 $log->user = $user;
