@@ -35,14 +35,6 @@
 </div>
 
 <h2 class="page-header">Activity Log</h2>
-<?php
-$user = User::find(1);
-$log = new stdClass();
-$log->message = 'Smashed it with a sledge hammer.';
-$log->user = $user;
-
-$logs = array($log,$log,$log,$log,$log,);
-?>
 <?php foreach ($computer->comments()->get() as $log) : ?>
   <div class="media">
     <div class="pull-left">
