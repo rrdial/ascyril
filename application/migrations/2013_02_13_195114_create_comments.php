@@ -12,7 +12,7 @@ class Create_Comments {
               $table->increments('id');
               $table->integer('computer_id')->unsigned();
               $table->integer('user_id')->unsigned();
-              $table->string('status', 255);
+              $table->integer('status_id')->unsigned();
               $table->text('message');
               $table->timestamps();
             }
