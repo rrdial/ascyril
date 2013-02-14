@@ -42,8 +42,8 @@
       <img class="media-object" src="{{$log->user->gravatar(64)}}">
     </div>
     <div class="media-body">
-      <h4 class="media-heading">{{$log->message}}</h4>
-      {{$log->user->nickname}}
+      {{$log->message}}<br>
+      <span class="muted">{{$log->user->nickname}} at {{$log->created_at}}</span>
     </div>
   </div>
 <?php endforeach; ?>
