@@ -4,25 +4,26 @@
 
 @section('content')
 <div class="page-header">
-  <h1>Computer {{$computer->asset_tag}}</h1>
+  <h1>Computer {{$computer->asset_tag}} <a class="label" href="{{URL::to_route('computer_edit', array($computer->asset_tag))}}">edit</a></h1>
 </div>
 
-<?php /*
-<dl>
-  <dt>Current status</dt>
-  <dd>{{$computer->status ? $computer->status->value : 'unavailable'}}</dd>
-  
-  <dt>Serial Number</dt>
-  <dd>{{$computer->sn}}</dd>
-  
-  <dt>ARD name</dt>
-  <dd>gates-student-{{$computer->name}}</dd>
-</dl>
-*/ ?>
+@if (Session::has('login_errors'))
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Update successful!</strong>
+</div>
+@endif
+
 <div class="row">
   <div class="span4">
     <h4>Current Status</h4>
-    {{$computer->status ? $computer->status->value : 'unavailable'}}
+    @if ($computer->status)
+    <div class="alert {{$computer->class}}">
+      {{$computer->status->name}}
+    </div>
+    @else
+    Nothing special
+    @endif
   </div>
   <div class="span4">
     <h4>Serial Number</h4>
@@ -30,7 +31,7 @@
   </div>
   <div class="span4">
     <h4>ARD Name</h4>
-    gates-student-{{intval($computer->name)}}
+    {{$computer->name}}
   </div>
 </div>
 

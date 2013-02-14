@@ -38,8 +38,17 @@ Route::get('/', 'home@index');
 
 Route::get('computers', array('before' => 'auth', 'uses' => 'computers@index'));
 Route::post('computers', array('before' => 'auth', 'uses' => 'computers@index'));
+Route::get('(:any)/edit', array(
+    'before' => 'auth',
+    'as' => 'computer_edit',
+    'uses' => 'computers@edit',
+));
+Route::post('(:any)/edit', array(
+    'before' => 'auth',
+    'uses' => 'computers@edit',
+));
 
-Route::get('computers/(:num)', array('before' => 'auth',
+Route::get('(:num)', array('before' => 'auth',
     'as' => 'computer_view',
     function($asset_tag) {
       if ($computer = Computer::where_asset_tag($asset_tag)->first()) {
