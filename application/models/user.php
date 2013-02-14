@@ -22,4 +22,8 @@ class User extends Eloquent {
     return $url . '?' . http_build_query($options);
   }
 
+  public function set_password($password) {
+    $this->set_attribute('password', Hash::make($password));
+  }
+
 }

@@ -17,12 +17,13 @@ class Create_Users {
               $table->string('password', 64);
               $table->timestamps();
             });
-    DB::table('users')->insert(array(
-        'username' => 'admin',
-        'email' => 'admin@local.dev',
-        'nickname' => 'Admin',
-        'password' => Hash::make('password')
-    ));
+
+    $user = new User();
+    $user->username = 'admin';
+    $user->email = 'admin@local.dev';
+    $user->nickname = 'Admin';
+    $user->password = 'password';
+    $user->save();
   }
 
   /**

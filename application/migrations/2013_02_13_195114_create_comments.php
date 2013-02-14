@@ -1,6 +1,6 @@
 <?php
 
-class Create_Logs {
+class Create_Comments {
 
   /**
    * Make changes to the database.
@@ -8,7 +8,7 @@ class Create_Logs {
    * @return void
    */
   public function up() {
-    Schema::create('logs', function($table) {
+    Schema::create('comments', function($table) {
               $table->increments('id');
               $table->integer('computer_id')->unsigned();
               $table->integer('user_id')->unsigned();
@@ -25,7 +25,7 @@ class Create_Logs {
    * @return void
    */
   public function down() {
-    Schema::drop('logs');
+    Schema::drop('comments');
   }
 
 }

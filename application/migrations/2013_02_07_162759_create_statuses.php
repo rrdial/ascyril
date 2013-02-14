@@ -11,7 +11,10 @@ class Create_Statuses {
     Schema::create('statuses', function($table) {
               $table->engine = 'InnoDB';
               $table->increments('id');
-              $table->string('value', 127)->unique();
+              $table->string('name', 127)->unique();
+              $table->string('class', 15);
+              $table->text('description')->nullable();
+              $table->timestamps();
             }
     );
   }
