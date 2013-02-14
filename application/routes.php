@@ -60,16 +60,6 @@ Route::get('(:num)', array('before' => 'auth',
     })
 );
 
-Route::get('computers/(:num)/edit', function($asset_tag) {
-          //
-        });
-
-Route::post('computers/(:num)/edit', array('before' => 'auth|csrf',
-    function($asset_tag) {
-      //
-    })
-);
-
 /*
  * Routing for user profile shtuff
  */
