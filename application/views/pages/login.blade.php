@@ -19,7 +19,7 @@
 @endif
 
 <h2 class="form-signin-heading">Please sign in</h2>
-<?php echo Form::text('username', NULL, array('placeholder' => 'username', 'class' => 'input-block-level')) ?>
+<?php echo Form::text('username', NULL, array('placeholder' => 'username', 'class' => 'input-block-level', 'autofocus' => TRUE)) ?>
 <?php echo Form::password('password', array('placeholder' => 'password', 'class' => 'input-block-level')) ?>
 <button class="btn btn-large btn-primary" type="submit">Sign in</button>
 
