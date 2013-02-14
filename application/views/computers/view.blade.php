@@ -18,7 +18,7 @@
   <div class="span4">
     <h4>Current Status</h4>
     @if ($computer->status)
-    <div class="alert {{$computer->status->class}}">
+    <div class="alert alert-{{$computer->status->class}}">
       {{$computer->status->name}}
     </div>
     @else

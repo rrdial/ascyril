@@ -84,9 +84,13 @@ Route::post('comment', array('before' => 'auth',
         $c->computer_id = Input::get('computer_id');
         $c->message = Input::get('message');
         $c->user_id = Auth::user()->id;
-        if (isset($rules['status_id']))
+        if (isset($rules['status_id'])) {
           $c->status_id = Input::get('status_id');
+        } else {
+          $c->status_id = NULL;
+        }
         $c->save();
+        $c->computer()->update(array('status_id' => $c->status_id));
         return Redirect::back(303)
                         ->with('commented', TRUE);
       }
