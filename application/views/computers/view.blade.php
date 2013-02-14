@@ -18,7 +18,7 @@
   <div class="span4">
     <h4>Current Status</h4>
     @if ($computer->status)
-    <div class="alert {{$computer->class}}">
+    <div class="alert {{$computer->status->class}}">
       {{$computer->status->name}}
     </div>
     @else
@@ -47,6 +47,19 @@
     </div>
   </div>
 <?php endforeach; ?>
+<div class="row">
+  <div class="span12">
+    {{Form::open('comment', 'POST', array('class' => 'form-inline'))}}
+    <fieldset>
+      <legend>New comment</legend>
+      {{Form::hidden('computer_id', $computer->id)}}
+      {{Form::textarea('message', Input::get('message'), array('class' => 'span8', 'rows' => 2))}}
+      {{Form::select('status_id', $dropdown, Input::get('status_id', $computer->status_id), array('class' => 'span3'))}}
+      <button class="btn" type="submit">Submit</button>
+    </fieldset>
+    {{Form::close()}}
+  </div>
+</div>
 
 <?php //var_dump($computer); ?>
 @endsection

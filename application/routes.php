@@ -52,13 +52,49 @@ Route::get('(:num)', array('before' => 'auth',
     'as' => 'computer_view',
     function($asset_tag) {
       if ($computer = Computer::where_asset_tag($asset_tag)->first()) {
+        $dropdown = array('0' => '');
+        $statuses = Status::all();
+        foreach ($statuses as $s) {
+          $dropdown[$s->id] = $s->name;
+        }
         return View::make('computers.view')
-                        ->with('computer', $computer);
+                        ->with('computer', $computer)
+                        ->with('dropdown', $dropdown);
       } else {
         return \Laravel\Response::error(404);
       }
     })
 );
+
+/*
+ * Commenting
+ */
+Route::post('comment', array('before' => 'auth',
+    function() {
+      $rules = array(
+          'computer_id' => 'required|exists:computers,id',
+          'message' => 'required',
+          'status_id' => 'integer|exists:statuses,id',
+      );
+      if (Input::get('status_id') == 0)
+        unset($rules['status_id']);
+      $v = Validator::make(Input::all(), $rules);
+      if ($v->passes()) {
+        $c = new Comment();
+        $c->computer_id = Input::get('computer_id');
+        $c->message = Input::get('message');
+        $c->user_id = Auth::user()->id;
+        if (isset($rules['status_id']))
+          $c->status_id = Input::get('status_id');
+        $c->save();
+        return Redirect::back(303)
+                        ->with('commented', TRUE);
+      }
+      return Redirect::back(303)
+                      ->with_errors($v)
+                      ->with_input();
+    }
+));
 
 /*
  * Routing for user profile shtuff
